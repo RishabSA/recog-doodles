@@ -3,6 +3,7 @@ from flask_cors import CORS, cross_origin
 import torch
 import torch.nn as nn
 import torch.optim as optim
+import numpy as np
 
 app = Flask(
     __name__, static_folder="../recog-doodles-client/build", static_url_path="/"
@@ -420,13 +421,17 @@ def predict():
     try:
         # Get input data from the request
         data = request.get_json()  # assuming input is JSON
-        input_data = torch.tensor(data["input"]).float()
+        input_data = np.array(data["input"])
+
+        input_tensor = torch.from_numpy(input_data).unsqueeze(0).unsqueeze(0).float()
 
         # Perform inference
         with torch.no_grad():
-            pred_logits = model(input_data)
+            pred_logits = model(input_tensor)
 
         pred_prob = torch.softmax(pred_logits.squeeze(), dim=0)
+
+        print(pred_prob)
 
         preds = pred_prob.argmax(dim=0)
 

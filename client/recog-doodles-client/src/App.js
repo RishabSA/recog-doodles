@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import runONNXModel from "./onnxModelHelper";
 
 const class_names = [
 	"The Eiffel Tower",
@@ -427,9 +426,9 @@ const App = () => {
 		// const smallCtx = smallCanvas.getContext("2d");
 		// smallCtx.drawImage(canvas, 0, 0, 28, 28);
 
-		const canvasContext = canvas.getContext("2d");
+		const ctx = canvas.getContext("2d");
 
-		const imageData = canvasContext.getImageData(0, 0, 28, 28);
+		const imageData = ctx.getImageData(0, 0, 28, 28);
 		const data = [];
 
 		// Extract grayscale pixel data
@@ -451,7 +450,7 @@ const App = () => {
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify({ input: [[tensorData]] }),
+				body: JSON.stringify({ input: tensorData }),
 			});
 			const data = await response.json();
 
