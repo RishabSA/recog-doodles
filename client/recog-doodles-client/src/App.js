@@ -434,7 +434,7 @@ const App = () => {
 		// Extract grayscale pixel data
 		for (let i = 0; i < imageData.data.length; i += 4) {
 			const gray = imageData.data[i + 3]; // Take the alpha channel
-			data.push(gray / 255.0); // Normalize to [0, 1]
+			data.push(1 - gray / 255.0); // Normalize to [0, 1]
 		}
 
 		const tensorData = [];
