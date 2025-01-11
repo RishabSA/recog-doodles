@@ -1,351 +1,104 @@
 import React, { useEffect, useRef, useState } from "react";
 
 const class_names = [
-	"The Eiffel Tower",
-	"The Great Wall of China",
-	"The Mona Lisa",
-	"aircraft carrier",
 	"airplane",
-	"alarm clock",
-	"ambulance",
-	"angel",
-	"animal migration",
-	"ant",
-	"anvil",
 	"apple",
 	"arm",
-	"asparagus",
-	"axe",
-	"backpack",
 	"banana",
-	"bandage",
-	"barn",
-	"baseball",
 	"baseball bat",
 	"basket",
 	"basketball",
 	"bat",
-	"bathtub",
 	"beach",
 	"bear",
-	"beard",
 	"bed",
 	"bee",
-	"belt",
-	"bench",
 	"bicycle",
-	"binoculars",
 	"bird",
-	"birthday cake",
-	"blackberry",
-	"blueberry",
 	"book",
-	"boomerang",
 	"bottlecap",
-	"bowtie",
-	"bracelet",
 	"brain",
 	"bread",
 	"bridge",
-	"broccoli",
-	"broom",
 	"bucket",
-	"bulldozer",
 	"bus",
 	"bush",
-	"butterfly",
-	"cactus",
 	"cake",
-	"calculator",
-	"calendar",
-	"camel",
 	"camera",
-	"camouflage",
-	"campfire",
 	"candle",
-	"cannon",
-	"canoe",
 	"car",
 	"carrot",
-	"castle",
 	"cat",
-	"ceiling fan",
-	"cell phone",
-	"cello",
 	"chair",
-	"chandelier",
-	"church",
-	"circle",
-	"clarinet",
 	"clock",
 	"cloud",
 	"coffee cup",
 	"compass",
-	"computer",
 	"cookie",
-	"cooler",
-	"couch",
-	"cow",
-	"crab",
-	"crayon",
-	"crocodile",
-	"crown",
-	"cruise ship",
 	"cup",
-	"diamond",
-	"dishwasher",
-	"diving board",
 	"dog",
-	"dolphin",
 	"donut",
 	"door",
-	"dragon",
-	"dresser",
-	"drill",
-	"drums",
 	"duck",
-	"dumbbell",
 	"ear",
-	"elbow",
 	"elephant",
-	"envelope",
-	"eraser",
 	"eye",
-	"eyeglasses",
 	"face",
 	"fan",
-	"feather",
-	"fence",
-	"finger",
-	"fire hydrant",
-	"fireplace",
-	"firetruck",
-	"fish",
-	"flamingo",
-	"flashlight",
-	"flip flops",
-	"floor lamp",
 	"flower",
-	"flying saucer",
 	"foot",
 	"fork",
 	"frog",
-	"frying pan",
-	"garden",
 	"garden hose",
-	"giraffe",
-	"goatee",
-	"golf club",
-	"grapes",
-	"grass",
 	"guitar",
 	"hamburger",
 	"hammer",
 	"hand",
-	"harp",
 	"hat",
 	"headphones",
-	"hedgehog",
-	"helicopter",
-	"helmet",
-	"hexagon",
-	"hockey puck",
-	"hockey stick",
-	"horse",
-	"hospital",
-	"hot air balloon",
-	"hot dog",
-	"hot tub",
-	"hourglass",
-	"house",
-	"house plant",
-	"hurricane",
 	"ice cream",
-	"jacket",
-	"jail",
-	"kangaroo",
 	"key",
-	"keyboard",
 	"knee",
-	"knife",
-	"ladder",
-	"lantern",
 	"laptop",
 	"leaf",
-	"leg",
 	"light bulb",
-	"lighter",
-	"lighthouse",
-	"lightning",
-	"line",
 	"lion",
-	"lipstick",
-	"lobster",
 	"lollipop",
 	"mailbox",
 	"map",
-	"marker",
-	"matches",
-	"megaphone",
-	"mermaid",
-	"microphone",
-	"microwave",
-	"monkey",
-	"moon",
-	"mosquito",
-	"motorbike",
-	"mountain",
-	"mouse",
-	"moustache",
-	"mouth",
-	"mug",
-	"mushroom",
-	"nail",
-	"necklace",
-	"nose",
-	"ocean",
-	"octagon",
-	"octopus",
-	"onion",
-	"oven",
-	"owl",
-	"paint can",
-	"paintbrush",
-	"palm tree",
-	"panda",
-	"pants",
-	"paper clip",
-	"parachute",
-	"parrot",
-	"passport",
-	"peanut",
-	"pear",
-	"peas",
 	"pencil",
 	"penguin",
-	"piano",
-	"pickup truck",
-	"picture frame",
 	"pig",
 	"pillow",
-	"pineapple",
 	"pizza",
-	"pliers",
 	"police car",
-	"pond",
 	"pool",
-	"popsicle",
-	"postcard",
 	"potato",
-	"power outlet",
-	"purse",
 	"rabbit",
-	"raccoon",
-	"radio",
 	"rain",
 	"rainbow",
 	"rake",
-	"remote control",
-	"rhinoceros",
-	"rifle",
-	"river",
-	"roller coaster",
-	"rollerskates",
-	"sailboat",
-	"sandwich",
-	"saw",
-	"saxophone",
-	"school bus",
-	"scissors",
-	"scorpion",
-	"screwdriver",
-	"sea turtle",
-	"see saw",
-	"shark",
-	"sheep",
-	"shoe",
-	"shorts",
-	"shovel",
-	"sink",
-	"skateboard",
-	"skull",
-	"skyscraper",
-	"sleeping bag",
-	"smiley face",
-	"snail",
-	"snake",
-	"snorkel",
 	"snowflake",
-	"snowman",
 	"soccer ball",
-	"sock",
-	"speedboat",
-	"spider",
 	"spoon",
-	"spreadsheet",
 	"square",
-	"squiggle",
-	"squirrel",
-	"stairs",
 	"star",
-	"steak",
-	"stereo",
-	"stethoscope",
-	"stitches",
 	"stop sign",
-	"stove",
 	"strawberry",
-	"streetlight",
-	"string bean",
-	"submarine",
-	"suitcase",
 	"sun",
 	"swan",
-	"sweater",
-	"swing set",
-	"sword",
-	"syringe",
-	"t-shirt",
 	"table",
-	"teapot",
 	"teddy-bear",
 	"telephone",
-	"television",
-	"tennis racquet",
 	"tent",
-	"tiger",
-	"toaster",
-	"toe",
-	"toilet",
-	"tooth",
-	"toothbrush",
-	"toothpaste",
-	"tornado",
-	"tractor",
-	"traffic light",
-	"train",
 	"tree",
-	"triangle",
-	"trombone",
 	"truck",
-	"trumpet",
 	"umbrella",
-	"underwear",
 	"van",
 	"vase",
-	"violin",
 	"washing machine",
 	"watermelon",
-	"waterslide",
 	"whale",
-	"wheel",
-	"windmill",
-	"wine bottle",
-	"wine glass",
-	"wristwatch",
-	"yoga",
-	"zebra",
-	"zigzag",
 ];
 
 const App = () => {
@@ -361,14 +114,26 @@ const App = () => {
 	useEffect(() => {
 		const canvas = canvasRef.current;
 
-		// Resize to 28x28 and extract grayscale pixel data
-		const smallCanvas = document.createElement("canvas");
-		smallCanvas.width = 28;
-		smallCanvas.height = 28;
-		const smallCtx = smallCanvas.getContext("2d");
-		smallCtx.drawImage(canvas, 0, 0, 28, 28);
+		canvas.width = 28;
+		canvas.style.width = "500px";
 
-		const imageData = smallCtx.getImageData(0, 0, 28, 28);
+		canvas.height = 28;
+		canvas.style.height = "500px";
+	}, []);
+
+	useEffect(() => {
+		const canvas = canvasRef.current;
+
+		// Resize to 28x28 and extract grayscale pixel data
+		// const smallCanvas = document.createElement("canvas");
+		// smallCanvas.width = 28;
+		// smallCanvas.height = 28;
+		// const ctx = smallCanvas.getContext("2d");
+		// ctx.drawImage(canvas, 0, 0, 28, 28);
+
+		const ctx = canvas.getContext("2d");
+
+		const imageData = ctx.getImageData(0, 0, 28, 28);
 		const allZeros = imageData.data.every(item => item === 0);
 
 		setContentOnCanvas(!allZeros);
@@ -378,8 +143,13 @@ const App = () => {
 	const startDrawing = e => {
 		const canvas = canvasRef.current;
 		const ctx = canvas.getContext("2d");
+
+		const scaleFactor = canvas.width / 500;
 		ctx.beginPath();
-		ctx.moveTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
+		ctx.moveTo(
+			e.nativeEvent.offsetX * scaleFactor,
+			e.nativeEvent.offsetY * scaleFactor
+		);
 		canvas.isDrawing = true;
 		setDrawingFlag(!drawingFlag);
 	};
@@ -389,9 +159,13 @@ const App = () => {
 		const ctx = canvas.getContext("2d");
 		if (!canvas.isDrawing) return;
 
-		ctx.lineTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
+		const scaleFactor = canvas.width / 500;
+		ctx.lineTo(
+			e.nativeEvent.offsetX * scaleFactor,
+			e.nativeEvent.offsetY * scaleFactor
+		);
 		ctx.strokeStyle = "black";
-		ctx.lineWidth = lineWidth;
+		ctx.lineWidth = lineWidth * scaleFactor; // Scale the line width as well
 		ctx.lineCap = "round";
 		ctx.stroke();
 		setDrawingFlag(!drawingFlag);
@@ -421,13 +195,7 @@ const App = () => {
 
 		// Resize to 28x28 and extract grayscale pixel data
 
-		const smallCanvas = document.createElement("canvas");
-		smallCanvas.width = 28;
-		smallCanvas.height = 28;
-		const ctx = smallCanvas.getContext("2d");
-		ctx.drawImage(canvas, 0, 0, 28, 28);
-
-		// const ctx = canvas.getContext("2d");
+		const ctx = canvas.getContext("2d");
 
 		const imageData = ctx.getImageData(0, 0, 28, 28);
 		const data = [];
@@ -451,7 +219,7 @@ const App = () => {
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify({ input: [[tensorData]] }),
+				body: JSON.stringify({ input: [tensorData] }),
 			});
 			const data = await response.json();
 
@@ -464,13 +232,6 @@ const App = () => {
 		} catch (error) {
 			console.error("Error:", error);
 		}
-
-		// try {
-		// 	const result = await runONNXModel(tensorData);
-		// 	setPrediction(result);
-		// } catch (error) {
-		// 	console.error("Error running ONNX model:", error);
-		// }
 	};
 
 	return (
