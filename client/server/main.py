@@ -1266,7 +1266,7 @@ def predict():
     try:
         # Get input data from the request
         data = request.get_json()  # assuming input is JSON
-        input_data = np.array(data["input"])
+        input_data = np.array(data["input"]).squeeze()
         # print(input_data)
         # input_data = np.array(test_image).squeeze()
 

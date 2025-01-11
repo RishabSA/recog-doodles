@@ -420,13 +420,14 @@ const App = () => {
 		const canvas = canvasRef.current;
 
 		// Resize to 28x28 and extract grayscale pixel data
-		// const smallCanvas = document.createElement("canvas");
-		// smallCanvas.width = 28;
-		// smallCanvas.height = 28;
-		// const smallCtx = smallCanvas.getContext("2d");
-		// smallCtx.drawImage(canvas, 0, 0, 28, 28);
 
-		const ctx = canvas.getContext("2d");
+		const smallCanvas = document.createElement("canvas");
+		smallCanvas.width = 28;
+		smallCanvas.height = 28;
+		const ctx = smallCanvas.getContext("2d");
+		ctx.drawImage(canvas, 0, 0, 28, 28);
+
+		// const ctx = canvas.getContext("2d");
 
 		const imageData = ctx.getImageData(0, 0, 28, 28);
 		const data = [];
@@ -450,7 +451,7 @@ const App = () => {
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify({ input: tensorData }),
+				body: JSON.stringify({ input: [[tensorData]] }),
 			});
 			const data = await response.json();
 
@@ -487,8 +488,8 @@ const App = () => {
 				</div>
 				<canvas
 					ref={canvasRef}
-					width={28}
-					height={28}
+					width={500}
+					height={500}
 					className="block border-4 border-gray-400 rounded-lg shadow-lg bg-white"
 					style={{ cursor: "crosshair" }}
 					onMouseDown={startDrawing}
@@ -499,7 +500,7 @@ const App = () => {
 				{prediction !== null && (
 					<p>Predicted Class: {class_names[prediction]}</p>
 				)}
-				<div className="flex mt-4">
+				<div className="flex mt-2">
 					{contentOnCanvas ? (
 						<button onClick={predictCanvas} className="btn btn-secondary mx-2">
 							<span>Predict</span>
